@@ -1,8 +1,15 @@
 import express from "express";
-import debug from "debug";
-const log = debug("app")
+import mongoose from "mongoose";
 
 const app = express();
+
+mongoose.connect("mongodb://localhost:27017")
+    .then(() => {
+       console.log("DB Connected.");
+    })
+    .catch(() => {
+       console.log("Unable to connect to DB.")
+    })
 
 app.get("/users", (req, res) => {
    res.json({"message": "success"})
