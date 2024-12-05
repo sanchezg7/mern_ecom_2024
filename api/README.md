@@ -12,7 +12,7 @@ Model objects and perform transactions on data without writing the queries direc
 docker compose -f ./docker/docker-compose.yml up
 
 # Authentication
-`auth.js`
+`feature/authentication/controller/authController.js`
 
 # Middleware
 ```javascript
@@ -29,9 +29,9 @@ brcrypt for hashing with a salt and then comparing
 Never save the password directly to the DB
 
 # Http Request Logging
-morgan
+morgan in development
 ```javascript
 import morgan from "morgan";
 
-
+app.use(morgan("dev"));
 ```
