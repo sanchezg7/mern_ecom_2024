@@ -1,11 +1,10 @@
 import express from "express";
 import dotenv from "dotenv";
 import mongoose from "mongoose";
+import morgan from "morgan";
 import authRoutes from "./controller/auth.js";
 
 dotenv.config();
-
-const app = express();
 
 mongoose.connect("mongodb://localhost:27017")
     .then(() => {
@@ -15,7 +14,14 @@ mongoose.connect("mongodb://localhost:27017")
        console.log("Unable to connect to DB.")
     })
 
-
+const app = express();
+/**
+ * https://www.npmjs.com/package/morgan#dev
+ * dev
+ *
+ * Concise output colored by response status for development use. The :status token will be colored green for success codes, red for server error codes, yellow for client error codes, cyan for redirection codes, and uncolored for information codes.
+ */
+app.use(morgan("dev"));
 app.use((req, res, next) => {
    console.log("middleware");
    next();

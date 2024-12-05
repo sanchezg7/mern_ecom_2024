@@ -27,3 +27,11 @@ app.use((req, res, next) => {
 # Auth
 brcrypt for hashing with a salt and then comparing
 Never save the password directly to the DB
+
+# Http Request Logging
+morgan
+```javascript
+import morgan from "morgan";
+
+
+```
