@@ -23,3 +23,7 @@ app.use((req, res, next) => {
 
 # Schema
 [Mongoose Schema Type Options](https://mongoosejs.com/docs/api/schematypeoptions.html)
+
+# Auth
+brcrypt for hashing with a salt and then comparing
+Never save the password directly to the DB
