@@ -2,12 +2,12 @@ import express from "express";
 import dotenv from "dotenv";
 import mongoose from "mongoose";
 import morgan from "morgan";
-import authFeature from "./feature/authentication/controller/authController.js";
-import registrationFeature from "./feature/registration/controller/registrationController.js";
+import authFeature from "./context/UserManagement/feature/authentication/controller/authController.js";
+import registrationFeature from "./context/UserManagement/feature/registration/controller/registrationController.js";
 
 dotenv.config();
 
-mongoose.connect("mongodb://localhost:27017")
+mongoose.connect("mongodb://admin:admin@localhost:27017")
     .then(() => {
        console.log("DB Connected.");
     })
