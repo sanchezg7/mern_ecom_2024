@@ -51,5 +51,9 @@ morgan in development
 ```javascript
 import morgan from "morgan";
 
-app.use(morgan("dev"));
+app.use(morgan("common"));
+```
+
+```bash
+::1 - - [22/Dec/2024:21:42:14 +0000] "GET /user HTTP/1.1" 404 143
 ```

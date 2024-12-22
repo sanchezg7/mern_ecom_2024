@@ -6,8 +6,8 @@ import cHandler from "../command/registrationCommandHandler.js";
 
 /**
  *
- * @param {User} userWip
- *
+ * @param {CreateUserDto} userWip
+ * @returns {User}
  */
 export async function create(userWip) {
     const { name, email, password } = userWip;
@@ -29,8 +29,7 @@ export async function create(userWip) {
     const hashedPassword = await hashPassword(userWip.password);
 
     const command = new RegisterUserCommand(email, name, hashedPassword);
-    const user = await cHandler.registerUser(command);
-    return user;
+    return cHandler.registerUser(command);
 }
 
 /**

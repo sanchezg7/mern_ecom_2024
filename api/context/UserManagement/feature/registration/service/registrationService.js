@@ -1,9 +1,13 @@
 import * as User from "../domain/User.js";
 
-// Application Service Layer
-export const register = async (req, res) => {
-    const user = await User.create(req.body);
-    return user;
+
+/**
+ *
+ * @param {CreateUserDto} userDto
+ * @returns {User}
+ */
+export const register = async (userDto) => {
+    return User.create(userDto);
 }
 
 export default {
