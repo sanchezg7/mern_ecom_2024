@@ -21,7 +21,8 @@ export async function create(userWip) {
         throw new Error("Password is required and at least 6 characters long");
     }
 
-    if(!isEmailUnique(userWip)){
+    const isUnique = await isEmailUnique(userWip);
+    if(!isUnique){
         throw new Error("User already exists");
     }
 
@@ -37,9 +38,9 @@ export async function create(userWip) {
  * @param {User} user
  * @returns {boolean}
  */
-function isEmailUnique(user) {
+async function isEmailUnique(user) {
     const query = new FindUserByEmailQuery(user.email);
-    const existingUser = qHandler.findUserByEmail(query);
+    const existingUser = await qHandler.findUserByEmail(query);
     let isUnique = true;
     if(existingUser){
         isUnique = false;

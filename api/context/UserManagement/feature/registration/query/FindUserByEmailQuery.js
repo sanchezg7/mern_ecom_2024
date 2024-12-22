@@ -4,8 +4,8 @@
  * @param {String} email
  * @constructor
  */
-function FindUserByEmailQuery(user) {
-    this.email = user.email;
+function FindUserByEmailQuery(email) {
+    this.email = email;
     return this;
 }
 
