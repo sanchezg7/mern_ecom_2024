@@ -8,6 +8,7 @@ const { Schema } = mongoose;
  * @property {String} password
  * @property {String} address
  * @property {Number} role
+ * @property {String} _id
  */
 
 const userSchema = new Schema({
