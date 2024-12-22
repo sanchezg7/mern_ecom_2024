@@ -1,3 +1,9 @@
+# Get started
+Start the dependencies
+```bash
+docker compose -f ./docker/docker-compose.yml up
+```
+
 # API Project
 - npm init -y
 - npm i express
@@ -7,9 +13,19 @@
 
 # MongoDB
 
+## Useful Commands
+```mongo
+db.getCollectionNames()
+
+db.getSiblingDB("test").getCollection("users")
+    .find({})
+    .limit(21)
+
+db.users.drop()
+```
+
 ## Mongoose
 Model objects and perform transactions on data without writing the queries directly.
-docker compose -f ./docker/docker-compose.yml up
 
 # Authentication
 `feature/authentication/controller/authController.js`
