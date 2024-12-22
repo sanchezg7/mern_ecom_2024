@@ -1,6 +1,15 @@
 import mongoose from "mongoose";
 const { Schema } = mongoose;
 
+/**
+ * @typedef User
+ * @property {String} name
+ * @property {String} email
+ * @property {String} password
+ * @property {String} address
+ * @property {Number} role
+ */
+
 const userSchema = new Schema({
     name: {
         type: String,

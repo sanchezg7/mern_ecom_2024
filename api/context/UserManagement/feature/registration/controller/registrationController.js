@@ -1,21 +1,14 @@
 import express from "express";
-// import User from "../../../repository/user.js";
-import * as User from "../../../User.js";
+import UserService from "../service/registrationService.js"
 
 const router = express.Router()
 
 router.post("/user", (req, res) => {
-    register(req, res).then();
-});
-
-// Application Service Layer
-export const register = async (req, res) => {
-    try{
-        const user = await User.create(req.body);
+    UserService.register(req, res).then(user => {
         res.json(user);
-    } catch (e) {
-        console.log(e);
-    }
-}
+    }).catch(e => {
+        res.status(400).json({error: e.toString()});
+    });
+});
 
 export default router;
