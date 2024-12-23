@@ -22,6 +22,6 @@ export const hashPassword = (plainPassword) => {
     });
 };
 
-export const comparePassword = (password, hashed) => {
+export const comparePassword = async (password, hashed) => {
     return bcrypt.compare(password, hashed);
 }

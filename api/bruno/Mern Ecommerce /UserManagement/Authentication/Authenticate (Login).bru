@@ -1,0 +1,18 @@
+meta {
+  name: Authenticate (Login)
+  type: http
+  seq: 1
+}
+
+post {
+  url: {{api}}/login
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+    "email": "g@gmail.com",
+    "password": "funkeymonkey"
+  }
+}
