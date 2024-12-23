@@ -1,0 +1,19 @@
+meta {
+  name: Register User Invalid
+  type: http
+  seq: 3
+}
+
+post {
+  url: {{api}}/user
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+    "name": "",
+    "email": "g@gmail.com",
+    "password": "fkey"
+  }
+}
