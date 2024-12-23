@@ -28,7 +28,8 @@ router.post("/user", (req, res) => {
         });
     }).catch(e => {
         res.status(400).json({error: e.toString()});
-        console.error(e.toString());
+        console.error(e.message);
+        console.error(e.stack);
     });
 });
 

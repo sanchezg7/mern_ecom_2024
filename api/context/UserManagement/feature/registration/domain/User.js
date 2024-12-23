@@ -3,9 +3,7 @@ import qHandler from "../query/registrationQueryHandler.js";
 import {hashPassword} from "../../authentication/domain/auth.js";
 import RegisterUserCommand from "../command/RegisterUserCommand.js";
 import cHandler from "../command/registrationCommandHandler.js";
-import jwt from "jsonwebtoken";
-
-
+import User from "../../common/domain/User.js";
 
 /**
  *
@@ -13,26 +11,12 @@ import jwt from "jsonwebtoken";
  * @returns {User}
  */
 export async function create(userWip) {
-    const { name, email, password } = userWip;
-    if(!name.trim()) {
-        throw new Error("Name is required");
-    }
-    if(!email){
-        throw new Error("Email is required");
-    }
-    if(!password || password.length < 6) {
-        throw new Error("Password is required and at least 6 characters long");
-    }
-
-    const isUnique = await isEmailUnique(userWip);
-    if(!isUnique){
-        throw new Error("User already exists");
-    }
+    await User.validateOrThrow(userWip);
 
     const hashedPassword = await hashPassword(userWip.password);
-
+    const { name, email, password } = userWip;
     const command = new RegisterUserCommand(email, name, hashedPassword);
-    return await cHandler.registerUser(command);
+    return cHandler.registerUser(command);
 }
 
 /**
