@@ -1,4 +1,5 @@
 import express from "express";
+import authSvc from "../authenticationService.js";
 
 const router = express.Router()
 
@@ -7,7 +8,7 @@ router.get("/users", (req, res) => {
 });
 
 router.post("/login", (req, res) => {
-    authSvc.login(req.body)
+    authSvc.authenticate(req.body)
         .then(result => {
             res.status(200).json({
                 ...result

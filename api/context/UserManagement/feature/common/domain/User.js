@@ -19,11 +19,6 @@ async function validateOrThrow(userWip) {
         errors.push("Password is required and at least 6 characters long");
     }
 
-    const isUnique = await isEmailUnique(userWip);
-    if(!isUnique){
-        errors.push("User already exists");
-    }
-
     if(errors.length > 0) {
         throw errors;
     }

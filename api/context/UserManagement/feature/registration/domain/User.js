@@ -13,6 +13,11 @@ import User from "../../common/domain/User.js";
 export async function create(userWip) {
     await User.validateOrThrow(userWip);
 
+    const isUnique = await isEmailUnique(userWip);
+    if(!isUnique){
+        throw new Error("User already exists");
+    }
+
     const hashedPassword = await hashPassword(userWip.password);
     const { name, email, password } = userWip;
     const command = new RegisterUserCommand(email, name, hashedPassword);
