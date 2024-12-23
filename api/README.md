@@ -57,3 +57,6 @@ app.use(morgan("common"));
 ```bash
 ::1 - - [22/Dec/2024:21:42:14 +0000] "GET /user HTTP/1.1" 404 143
 ```
+# Bruno
+This project uses Bruno for saving collections
+https://docs.usebruno.com/git-integration/using-cli

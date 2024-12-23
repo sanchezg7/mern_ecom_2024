@@ -22,6 +22,8 @@ router.post("/user", (req, res) => {
             user: {
                 name: user.name,
                 email: user.email,
+                address: user.address,
+                role: user.role,
             }
         });
     }).catch(e => {
