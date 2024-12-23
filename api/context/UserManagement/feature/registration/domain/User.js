@@ -5,8 +5,7 @@ import RegisterUserCommand from "../command/RegisterUserCommand.js";
 import cHandler from "../command/registrationCommandHandler.js";
 import jwt from "jsonwebtoken";
 
-const TODO_REPLACE_SECRET_TOKEN = "TODO_REPLACE_ME";
-const TOKEN_EXPIRES_IN = "7d"; // 7 days
+
 
 /**
  *
@@ -33,8 +32,7 @@ export async function create(userWip) {
     const hashedPassword = await hashPassword(userWip.password);
 
     const command = new RegisterUserCommand(email, name, hashedPassword);
-    const user = await cHandler.registerUser(command);
-    const token = jwt.sign({_id: user._id }, TODO_REPLACE_SECRET_TOKEN, { expiresIn: TOKEN_EXPIRES_IN})
+    return await cHandler.registerUser(command);
 }
 
 /**
