@@ -30,9 +30,8 @@ async function authenticate(userWip) {
     const isMatch = await comparePassword(password, user.password);
     if(isMatch){
         return user;
-        // // refactor
-        // return {token: jwt.sign({_id: user._id }, TODO_REPLACE_SECRET_TOKEN, { expiresIn: TOKEN_EXPIRES_IN})}
     }
+    throw new Error("Authentication unsuccessful");
 }
 
 
