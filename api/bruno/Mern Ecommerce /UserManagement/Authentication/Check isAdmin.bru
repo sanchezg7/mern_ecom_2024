@@ -5,7 +5,11 @@ meta {
 }
 
 get {
-  url: /protected
+  url: {{api}}/protected
   body: none
   auth: none
+}
+
+headers {
+  Authorization: {{token}}
 }

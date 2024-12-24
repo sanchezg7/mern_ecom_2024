@@ -16,3 +16,9 @@ body:json {
     "password": "funkeymonkey"
   }
 }
+
+script:post-response {
+  const data = res.body;
+  const { token } = data;
+  bru.setEnvVar("token", token);
+}
