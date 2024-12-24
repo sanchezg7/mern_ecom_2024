@@ -6,9 +6,6 @@ import { TODO_REPLACE_SECRET_TOKEN, TOKEN_EXPIRES_IN } from "../../common/domain
 
 const router = express.Router();
 
-// const TODO_REPLACE_SECRET_TOKEN = "TODO_REPLACE_ME";
-// const TOKEN_EXPIRES_IN = "7d"; // 7 days
-
 router.post("/user", (req, res) => {
     const userDto = new CreateUserDto(req.body);
     UserService.register(userDto).then(
