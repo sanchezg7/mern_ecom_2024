@@ -30,7 +30,7 @@ https://mongoosejs.com/docs/api/model.html
 https://mongoosejs.com/docs/api/model.html#Model.findOne()
 
 # Authentication
-`feature/authentication/controller/authController.js`
+`feature/authentication/controller/authenticationController.js`
 
 # Middleware
 ```javascript

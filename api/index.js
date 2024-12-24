@@ -2,7 +2,7 @@ import express from "express";
 import dotenv from "dotenv";
 import mongoose from "mongoose";
 import morgan from "morgan";
-import authFeature from "./context/UserManagement/feature/authentication/controller/authController.js";
+import authFeature from "./context/UserManagement/feature/authentication/controller/authenticationController.js";
 import registrationFeature from "./context/UserManagement/feature/registration/controller/registrationController.js";
 
 dotenv.config();

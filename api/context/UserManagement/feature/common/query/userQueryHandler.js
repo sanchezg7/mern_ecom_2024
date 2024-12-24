@@ -6,7 +6,7 @@ import UserRepo from "../../../repository/user.js";
  * @returns {User} user
  */
 async function findUserByEmail(query) {
-    return await UserRepo.findOne({email: query.email}).exec();
+    return UserRepo.findOne({email: query.email}).exec();
 }
 
 export default {
