@@ -2,6 +2,7 @@ import express from "express";
 import authSvc from "../authenticationService.js";
 import {TODO_REPLACE_SECRET_TOKEN, TOKEN_EXPIRES_IN} from "../../common/domain/session.js";
 import jwt from "jsonwebtoken";
+import {enforceAdminRoleOrThrowMdlw, injectUserContextMdlw} from "./authenticationMiddleware.js";
 
 const router = express.Router()
 
@@ -28,6 +29,10 @@ router.post("/login", (req, res) => {
             console.error(e.message);
             console.error(e.stack);
         });
+});
+
+router.get("/protected", injectUserContextMdlw, enforceAdminRoleOrThrowMdlw, (req, res) => {
+   res.status(200).json({"message": "success"})
 });
 
 export default router;

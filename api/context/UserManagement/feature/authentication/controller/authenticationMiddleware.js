@@ -19,8 +19,9 @@ export const injectUserContextMdlw = (req, res, next) => {
       */
     const decodedToken = jwt.verify(req.headers.authorization, TODO_REPLACE_SECRET_TOKEN);
     req.user = { _id: decodedToken._id };
+    next();
  } catch (err) {
-     return res.status(401)
+     return res.status(401).send({"message": err.message});
  }
 }
 
