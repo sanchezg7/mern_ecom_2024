@@ -4,6 +4,7 @@ const router = express.Router();
 import { injectUserContextMdlw, enforceAdminRoleOrThrowMdlw } from '../../../UserManagement/feature/authentication/controller/authenticationMiddleware.js';
 import Category from "../../repository/category.js";
 import slugify from "slugify";
+import CategoryService from "./categoryService.js";
 
 router.get('/category', (req, res) => {
     return res.status(200).send({"message": "yes"})
@@ -11,18 +12,11 @@ router.get('/category', (req, res) => {
 
 router.post('/category', async (req, res) => {
    try {
-       const { name } = req.body;
-       if(!name.trim()){
-        throw new Error("Name is required");
-       }
-       const match = await Category.findOne({name: name});
-       if(match){
-           throw new Error("Category already exists");
-       }
-       const category = await new Category({name, slug: slugify(name)}).save();
-       res.status(200).send({'category': {
-           name: category.name,
-               slug: category.slug,
+       const category = await CategoryService.create(req.body)
+       res.status(200).send(
+           {'category': {
+            name: category.name,
+            slug: category.slug,
            }})
    } catch (err) {
        console.error(err);
@@ -30,5 +24,12 @@ router.post('/category', async (req, res) => {
    }
 });
 
+router.delete('/category/:categoryId', (req, res) => {
+
+})
+
+router.put('/category', async (req, res) => {})
+
+router.get('category', async (req, res) => {})
 
 export default router;
