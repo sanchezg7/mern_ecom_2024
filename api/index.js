@@ -4,6 +4,11 @@ import mongoose from "mongoose";
 import morgan from "morgan";
 import authFeature from "./context/UserManagement/feature/authentication/controller/authenticationController.js";
 import registrationFeature from "./context/UserManagement/feature/registration/controller/registrationController.js";
+import storeFeature from './context/ECommerce/feature/admin/storeController.js';
+import {
+    enforceAdminRoleOrThrowMdlw,
+    injectUserContextMdlw
+} from "./context/UserManagement/feature/authentication/controller/authenticationMiddleware.js";
 
 dotenv.config();
 
@@ -29,7 +34,8 @@ app.use((req, res, next) => {
    next();
 });
 app.use(authFeature);
-app.use(registrationFeature)
+app.use(registrationFeature);
+app.use('/admin', injectUserContextMdlw, enforceAdminRoleOrThrowMdlw, storeFeature);
 
 const PORT = 8000;
 app.listen(8000, () => {
