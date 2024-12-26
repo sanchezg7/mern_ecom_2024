@@ -3,6 +3,7 @@ import slugify from "slugify";
 
 export async function create(data) {
     const { name } = data;
+    // Keeping here in service because it's not complex enough to put into an object, for now.
     if(!name.trim()){
         throw new Error("Name is required");
     }
@@ -10,7 +11,11 @@ export async function create(data) {
     if(match){
         throw new Error("Category already exists");
     }
-    const category = await new Category({name, slug: slugify(name)}).save();
+    const command = new CreateCategoryCommand(name);
+    const category = await new Category({
+        name: command.name,
+        slug: command.slug
+    }).save();
     return category;
 }
 

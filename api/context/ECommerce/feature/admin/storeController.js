@@ -13,11 +13,15 @@ router.get('/category', (req, res) => {
 router.post('/category', async (req, res) => {
    try {
        const category = await CategoryService.create(req.body)
-       res.status(200).send(
-           {'category': {
-            name: category.name,
-            slug: category.slug,
-           }})
+       res
+           .status(200)
+           .send(
+           {
+               'category': {
+                name: category.name,
+                slug: category.slug,
+               }
+           })
    } catch (err) {
        console.error(err);
        return res.status(400).json({error: err.message});
@@ -25,7 +29,14 @@ router.post('/category', async (req, res) => {
 });
 
 router.delete('/category/:categoryId', (req, res) => {
-
+    // try{
+    //     await CategoryService.deleteOne({})
+    // }catch(err){
+    //     console.error(err);
+    //     return res.status(400).json({
+    //         error: err.message
+    //     })
+    // }
 })
 
 router.put('/category', async (req, res) => {})
