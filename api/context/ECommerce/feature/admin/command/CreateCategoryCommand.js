@@ -11,3 +11,5 @@ function CreateCategoryCommand(name) {
     this.slug = slugify(this.name);
     return this;
 }
+
+export default CreateCategoryCommand;

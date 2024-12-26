@@ -28,6 +28,7 @@ db.users.drop()
 Model objects and perform transactions on data without writing the queries directly.
 https://mongoosejs.com/docs/api/model.html
 https://mongoosejs.com/docs/api/model.html#Model.findOne()
+https://mongoosejs.com/docs/api/model.html#Model.findOneAndUpdate()
 
 # Authentication
 `feature/authentication/controller/authenticationController.js`
