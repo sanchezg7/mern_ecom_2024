@@ -6,12 +6,12 @@ import Category from "../../repository/category.js";
 import slugify from "slugify";
 import CategoryService from "./categoryService.js";
 
-router.get('/category', async (req, res) => {
+router.get('/', async (req, res) => {
     const categories = await CategoryService.list();
     res.status(200).json(categories);
 });
 
-router.post('/category', async (req, res) => {
+router.post('/', async (req, res) => {
    try {
        const category = await CategoryService.create(req.body)
        res
@@ -30,7 +30,7 @@ router.post('/category', async (req, res) => {
    }
 });
 
-router.delete('/category/:categoryId', async (req, res) => {
+router.delete('/:categoryId', async (req, res) => {
     try{
         const { categoryId } = req.params;
         await CategoryService.deleteById(categoryId);
@@ -43,7 +43,7 @@ router.delete('/category/:categoryId', async (req, res) => {
     }
 })
 
-router.put('/category/:categoryId', async (req, res) => {
+router.put('/:categoryId', async (req, res) => {
     try{
         const { categoryId  } = req.params;
         const category = await CategoryService.updateName(categoryId, req.body);
@@ -54,7 +54,7 @@ router.put('/category/:categoryId', async (req, res) => {
     }
 })
 
-router.get('category/:slug', async (req, res) => {
+router.get(':slug', async (req, res) => {
     try{
         const slug = req.params.slug;
         const category = await CategoryService.getBySlug(slug);

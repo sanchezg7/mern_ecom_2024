@@ -4,7 +4,7 @@ import mongoose from "mongoose";
 import morgan from "morgan";
 import authFeature from "./context/UserManagement/feature/authentication/controller/authenticationController.js";
 import registrationFeature from "./context/UserManagement/feature/registration/controller/registrationController.js";
-import storeFeature from './context/ECommerce/feature/admin/storeController.js';
+import categoryManagementFeature from './context/ECommerceAdminManagement/feature/categoryManagement/categoryController.js';
 import {
     enforceAdminRoleOrThrowMdlw,
     injectUserContextMdlw
@@ -35,7 +35,7 @@ app.use((req, res, next) => {
 });
 app.use(authFeature);
 app.use(registrationFeature);
-app.use('/admin', injectUserContextMdlw, enforceAdminRoleOrThrowMdlw, storeFeature);
+app.use('/admin/category', injectUserContextMdlw, enforceAdminRoleOrThrowMdlw, categoryManagementFeature);
 
 const PORT = 8000;
 app.listen(8000, () => {
