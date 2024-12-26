@@ -1,0 +1,21 @@
+meta {
+  name: Update Category
+  type: http
+  seq: 3
+}
+
+put {
+  url: {{api}}/admin/category/676da8dd1a0e3d332b857d45
+  body: json
+  auth: none
+}
+
+headers {
+  Authorization: {{token}}
+}
+
+body:json {
+  {
+    "name": "NewName"
+  }
+}

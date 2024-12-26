@@ -19,8 +19,9 @@ router.post('/category', async (req, res) => {
            .send(
            {
                'category': {
-                name: category.name,
-                slug: category.slug,
+                    name: category.name,
+                    slug: category.slug,
+                    id: category._id
                }
            })
    } catch (err) {
@@ -32,7 +33,8 @@ router.post('/category', async (req, res) => {
 router.delete('/category/:categoryId', async (req, res) => {
     try{
         const { categoryId } = req.params;
-        await CategoryService.deleteById(categoryId)
+        await CategoryService.deleteById(categoryId);
+        res.status(200).send({message: "Deleted."});
     }catch(err){
         console.error(err);
         return res.status(400).json({

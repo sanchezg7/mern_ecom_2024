@@ -1,0 +1,15 @@
+meta {
+  name: Delete Category
+  type: http
+  seq: 4
+}
+
+delete {
+  url: {{api}}/admin/category/676da99acc225e0233bde523
+  body: json
+  auth: none
+}
+
+headers {
+  Authorization: {{token}}
+}

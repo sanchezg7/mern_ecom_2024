@@ -6,6 +6,11 @@ import CategoryQueryHandler from "./query/CategoryQueryHandler.js";
 import UpdateCategoryNameAndSlugCommand from "./command/UpdateCategoryNameAndSlugCommand.js";
 import DeleteCategoryByIdCommand from "./command/DeleteCategoryByIdCommand.js";
 
+/**
+ * This example shows what the object could look like without making an object for it
+ * @param {{name: String}} data
+ * @returns {Promise<*>}
+ */
 async function create(data) {
     const { name } = data;
     // Keeping here in service because it's not complex enough to put into an object, for now.
@@ -29,7 +34,14 @@ async function create(data) {
 }
 
 
+/**
+ *
+ * @param categoryId
+ * @param {{name: String}}data
+ * @returns {Promise<Query<any, any, unknown, any, "findOneAndUpdate", unknown>>}
+ */
 async function updateName(categoryId, data){
+    const { name } = data;
     const command = new UpdateCategoryNameAndSlugCommand(categoryId, name);
     return CategoryQueryHandler.updateCategoryNameAndSlug(command);
 }

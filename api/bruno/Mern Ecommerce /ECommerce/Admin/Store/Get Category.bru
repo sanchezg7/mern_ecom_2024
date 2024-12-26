@@ -1,0 +1,21 @@
+meta {
+  name: Get Category
+  type: http
+  seq: 2
+}
+
+get {
+  url: {{api}}/admin/category
+  body: json
+  auth: none
+}
+
+headers {
+  Authorization: {{token}}
+}
+
+body:json {
+  {
+    "name": "MyCategory"
+  }
+}
