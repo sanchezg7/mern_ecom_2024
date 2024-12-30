@@ -1,6 +1,7 @@
 /**
  *
  * @typedef Product
+ * @property _id
  * @property name
  * @property slug
  * @property description

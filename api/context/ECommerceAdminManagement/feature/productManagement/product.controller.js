@@ -29,4 +29,10 @@ router.get('/photo/:productId', async (req, res) => {
    return res.send(product.photo.data);
 });
 
+router.put('/:productId', formidable(), async (req, res) => {
+    const { productId } = req.params;
+    const { fields } = req;
+    const productWip = new Product(fields);
+    const product = await ProductService.update(productId, req.body);
+})
 export default router;

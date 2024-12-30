@@ -40,6 +40,15 @@ async function getPhoto(productId) {
         .select('photo');
 }
 
+/**
+ *
+ * @param {Product} product
+ * @returns {Promise<void>}
+ */
+async function update(product) {
+    return ProductModel.findByIdAndUpdate(product._id, product).save();
+}
+
 export default {
     create,
     list,
