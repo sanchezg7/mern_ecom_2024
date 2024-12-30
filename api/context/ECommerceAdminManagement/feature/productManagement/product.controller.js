@@ -11,4 +11,9 @@ router.post('/', formidable(), async (req, res) => {
     res.status(201).json(product);
 });
 
+router.get('/', async (req, res) => {
+   const products = await ProductService.list();
+   res.status(200).json(products);
+});
+
 export default router;

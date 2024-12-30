@@ -20,6 +20,15 @@ function create(data){
     return product.save();
 }
 
+async function list() {
+    return ProductModel
+        .find({})
+        .select('-photo')
+        .limit(12)
+        .sort({createdAt: -1});
+}
+
 export default {
-    create
+    create,
+    list
 };
