@@ -18,6 +18,7 @@
  * @constructor
  */
 function Product(data) {
+    // TODO: add validation here
     Object.assign(this, data);
     return this;
 }
