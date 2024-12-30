@@ -5,6 +5,7 @@ import morgan from "morgan";
 import authFeature from "./context/UserManagement/feature/authentication/controller/authenticationController.js";
 import registrationFeature from "./context/UserManagement/feature/registration/controller/registrationController.js";
 import categoryManagementFeature from './context/ECommerceAdminManagement/feature/categoryManagement/categoryController.js';
+import productManagementController from './context/ECommerceAdminManagement/feature/productManagement/product.controller.js';
 import {
     enforceAdminRoleOrThrowMdlw,
     injectUserContextMdlw
@@ -36,6 +37,7 @@ app.use((req, res, next) => {
 app.use(authFeature);
 app.use(registrationFeature);
 app.use('/admin/category', injectUserContextMdlw, enforceAdminRoleOrThrowMdlw, categoryManagementFeature);
+app.use('/admin/product', injectUserContextMdlw, enforceAdminRoleOrThrowMdlw, productManagementController);
 
 const PORT = 8000;
 app.listen(8000, () => {
