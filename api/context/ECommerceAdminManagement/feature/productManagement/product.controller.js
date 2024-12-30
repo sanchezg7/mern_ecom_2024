@@ -6,7 +6,7 @@ const router = express.Router();
 
 router.post('/', formidable(), async (req, res) => {
     const { fields, files } = req;
-    const productDto = new Product(fields);
+    const productDto = new Product(fields, files);
     const product = await ProductService.create(productDto);
     res.status(201).json(product);
 });

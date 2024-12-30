@@ -17,9 +17,10 @@
  * @returns {Product}
  * @constructor
  */
-function Product(data) {
+function Product(fields, files) {
     // TODO: add validation here
-    Object.assign(this, data);
+    Object.assign(this, fields);
+    this.photo = files.photo;
     return this;
 }
 export default Product;
