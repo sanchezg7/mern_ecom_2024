@@ -1,0 +1,23 @@
+meta {
+  name: Get Product Photo By Product ID
+  type: http
+  seq: 4
+}
+
+get {
+  url: {{api}}/admin/product/photo/6772e278a7642bb532493d0e
+  body: multipartForm
+  auth: none
+}
+
+headers {
+  Authorization: {{token}}
+}
+
+body:multipart-form {
+  name: Node
+  description: Learn node 2025
+  price: 52.99
+  category: 676c2359dd321c371f1ee107
+  ~photo: @file()
+}

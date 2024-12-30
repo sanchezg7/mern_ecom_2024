@@ -34,8 +34,15 @@ async function get(slug) {
         .select('-photo');
 }
 
+async function getPhoto(productId) {
+    return ProductModel
+        .findById(productId)
+        .select('photo');
+}
+
 export default {
     create,
     list,
-    get
+    get,
+    getPhoto
 };

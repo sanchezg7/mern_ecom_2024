@@ -20,6 +20,13 @@ router.get('/:slug', async (req, res) => {
     const { slug } = req.params;
     const product = await ProductService.get(slug);
     res.status(200).json(product);
-})
+});
+
+router.get('/photo/:productId', async (req, res) => {
+    const { productId } = req.params;
+   const product = await ProductService.getPhoto(productId);
+   res.set('Content-Type', product.photo.contentType);
+   return res.send(product.photo.data);
+});
 
 export default router;
