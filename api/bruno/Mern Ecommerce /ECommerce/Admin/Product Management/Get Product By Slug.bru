@@ -1,11 +1,11 @@
 meta {
-  name: Create Product
+  name: Get Product By Slug
   type: http
-  seq: 1
+  seq: 3
 }
 
-post {
-  url: {{api}}/admin/product
+get {
+  url: {{api}}/admin/product/node
   body: multipartForm
   auth: none
 }
@@ -19,6 +19,5 @@ body:multipart-form {
   description: Learn node 2025
   price: 52.99
   category: 676c2359dd321c371f1ee107
-  quantity: 80
   ~photo: @file()
 }

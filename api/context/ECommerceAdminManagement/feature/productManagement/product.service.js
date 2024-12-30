@@ -28,7 +28,14 @@ async function list() {
         .sort({createdAt: -1});
 }
 
+async function get(slug) {
+    return ProductModel
+        .findOne({ slug })
+        .select('-photo');
+}
+
 export default {
     create,
-    list
+    list,
+    get
 };

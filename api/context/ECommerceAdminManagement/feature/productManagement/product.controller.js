@@ -16,4 +16,10 @@ router.get('/', async (req, res) => {
    res.status(200).json(products);
 });
 
+router.get('/:slug', async (req, res) => {
+    const { slug } = req.params;
+    const product = await ProductService.get(slug);
+    res.status(200).json(product);
+})
+
 export default router;
